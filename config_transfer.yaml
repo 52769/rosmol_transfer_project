@@ -1,0 +1,49 @@
+base_url: "https://myrosmol.ru"
+projects_url: "https://myrosmol.ru/projects"
+
+# Этап 1. Аккаунты, из которых скачиваются проекты.
+# A - ФИО; B - логин; C - пароль — обязательные столбцы.
+# D - название проекта; E - дата создания ДД.ММ.ГГГГ — необязательные
+# подсказки только для автоматического режима. В обычном режиме проект выбирается в консоли.
+source_accounts_file: "исходник.xls"
+
+# Этап 2. Аккаунты, в которых создаются новые черновики.
+# A - ФИО; B - логин; C - пароль; D - имя/путь Word-файла или название проекта;
+# E - новое название проекта (необязательно).
+target_accounts_file: "итог.xls"
+
+project_template_name: "2026: Шаблон проекта конкурса Росмолодёжь.Гранты среди физических лиц"
+
+browser:
+  headless: false
+  slow_mo_ms: 0
+  timeout_ms: 15000
+  login_timeout_ms: 30000
+
+behavior:
+  project_match_threshold: 0.62
+  stop_on_error: false
+
+  # true - перед запуском выбрать нужный аккаунт из исходник.xls в консоли.
+  # Если в таблице одна строка, вопрос не задаётся.
+  interactive_account_selection: true
+
+  # true - после входа показать в консоли все проекты аккаунта и выбрать номер.
+  # false - автоматически искать проект по столбцам D-E файла исходник.xls.
+  interactive_project_selection: true
+
+  # Параметры ниже оставлены для совместимости со старым DOM-режимом.
+  # Основной режим загрузки сохраняет каждый содержательный раздел через API
+  # и при ошибке предлагает повторить, пропустить только раздел или остановиться.
+  save_after_each_tab: false
+  strict_required_fields: false
+
+paths:
+  downloaded_projects: "скачанные_проекты"
+  screenshots: "screenshots_transfer"
+  logs: "logs_transfer"
+
+performance:
+  block_heavy_resources: true
+  # all - каждый итоговый экран; errors - только ошибки; none - без скриншотов.
+  screenshots: "errors"

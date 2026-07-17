@@ -1,0 +1,21 @@
+ProjectTransfer GUI 2.5 - configuration path fix
+
+The GUI must be launched from the complete folder:
+  dist\ProjectTransfer\ProjectTransfer.exe
+
+The same folder must contain:
+  ProjectTransferWorker.exe
+  config_transfer.yaml
+  source and target XLS files
+  _internal\
+
+Version 2.5 separates two locations:
+- executable directory: editable config, XLS, reports and downloads;
+- _internal directory: packaged Python runtime and read-only resources.
+
+Rebuild steps:
+  1. Delete old build and dist folders.
+  2. Run build_exe.bat.
+  3. Launch dist\ProjectTransfer\ProjectTransfer.exe.
+
+Do not copy either EXE out of the ProjectTransfer folder.

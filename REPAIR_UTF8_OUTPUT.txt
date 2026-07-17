@@ -1,0 +1,13 @@
+PROJECTTRANSFER UTF-8 OUTPUT FIX
+
+Immediate fix for an existing build:
+1. Replace run_built_exe.bat with the v2.7 file.
+2. Always start the application through run_built_exe.bat.
+
+Permanent fix:
+1. Replace gui.py, worker.py and BAT files.
+2. Run build_exe.bat.
+3. Start dist\ProjectTransfer\ProjectTransfer.exe or run_built_exe.bat.
+
+The launcher sets PYTHONUTF8=1 and PYTHONIOENCODING=utf-8.
+The rebuilt worker also reconfigures stdin/stdout/stderr to UTF-8.

@@ -1,0 +1,26 @@
+ИСПРАВЛЕНИЕ ОШИБОК CMD / BAT — версия 2.2
+
+Причина ошибок вида:
+  'hon.exe" -c "import' is not recognized...
+  '--clean' is not recognized...
+  'оздан:' is not recognized...
+
+В версии 2.1 файлы install.bat и build_exe.bat имели Unix-переносы строк LF и содержали UTF-8 русский текст. Некоторые конфигурации cmd.exe разрывали такие строки посередине байтов.
+
+В версии 2.2:
+- все BAT-файлы содержат только ASCII;
+- все BAT-файлы имеют Windows-переносы CRLF;
+- в командах отсутствуют русские символы;
+- install.bat выбирает только Python 3.12;
+- build_exe.bat проверяет наличие PyInstaller и при необходимости запускает установку.
+
+Рекомендуемый путь распаковки:
+  C:\Automation\ProjectTransfer
+
+Порядок:
+1. Удалите старую папку .venv.
+2. Запустите install.bat.
+3. После успешной установки запустите build_exe.bat.
+
+Готовый EXE появится здесь:
+  dist\ProjectTransfer\ProjectTransfer.exe

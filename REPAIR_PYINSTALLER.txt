@@ -1,0 +1,28 @@
+ИСПРАВЛЕНИЕ ОШИБКИ PYINSTALLER
+
+Причина: старый install.bat использовал py -3, который выбирает самый новый Python.
+Если установлен Python 3.14, окружение .venv создавалось на 3.14, а PyInstaller 6.14.2
+не устанавливался. После этого build_exe.bat видел существующий .venv и не повторял
+установку, поэтому появлялось: No module named PyInstaller.
+
+Автоматическое исправление:
+1. Распакуйте проект в короткий путь латиницей, например C:\Automation\ProjectTransfer.
+2. Запустите install.bat.
+3. Запустите build_exe.bat.
+
+Ручное исправление из CMD в папке проекта:
+
+rmdir /s /q .venv
+py -3.12 -m venv .venv
+.venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
+.venv\Scripts\python.exe -m pip install -r requirements_transfer.txt
+.venv\Scripts\python.exe -m pip install --upgrade "pyinstaller>=6.15,<7" pyinstaller-hooks-contrib
+.venv\Scripts\python.exe -m playwright install chromium
+.venv\Scripts\python.exe -m PyInstaller --version
+build_exe.bat
+
+Диагностика:
+py --list
+py -3.12 --version
+.venv\Scripts\python.exe --version
+.venv\Scripts\python.exe -m PyInstaller --version

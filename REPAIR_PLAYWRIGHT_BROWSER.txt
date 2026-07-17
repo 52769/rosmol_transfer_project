@@ -1,0 +1,19 @@
+ProjectTransfer GUI 2.6 - Playwright Chromium path fix
+
+Cause:
+When Playwright runs inside a PyInstaller-frozen executable, it defaults
+PLAYWRIGHT_BROWSERS_PATH to 0. This makes it search for Chromium inside the temporary
+_MEI... folder. The browser installed by install.bat is normally stored in
+%LOCALAPPDATA%\ms-playwright, so the worker cannot find it.
+
+Immediate repair for an existing build:
+1. Close ProjectTransfer.
+2. Run repair_playwright_browser.bat from the project source folder.
+3. Start the program through run_built_exe.bat.
+
+Permanent repair:
+Run build_exe.bat from version 2.6. It installs a portable Chromium under
+   dist\ProjectTransfer\ms-playwright
+and both the GUI and worker explicitly use that directory. The complete
+   dist\ProjectTransfer
+folder must be kept together.

@@ -1,0 +1,12 @@
+PROJECTTRANSFER EXE START ERROR
+
+If the error path contains \build\ProjectTransfer\_internal\python314.dll, the wrong executable was started.
+
+Correct executable:
+  dist\ProjectTransfer\ProjectTransfer.exe
+
+Required neighboring folder:
+  dist\ProjectTransfer\_internal
+
+Do not copy ProjectTransfer.exe by itself. Copy the entire dist\ProjectTransfer folder.
+Use run_built_exe.bat to start the correct executable.

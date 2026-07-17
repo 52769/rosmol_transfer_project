@@ -1,0 +1,25 @@
+PYTHON STORE REPAIR / PYTHON 3.14 FALLBACK
+
+The installer now prefers a working Python 3.14, then 3.13, then 3.12.
+A broken Microsoft Store Python 3.12 entry is ignored automatically.
+
+Recommended clean recovery:
+
+1. Open CMD in this folder.
+2. Run:
+
+   rmdir /s /q .venv 2>nul
+   install.bat
+   build_exe.bat
+
+Diagnostics:
+
+   py --list-paths
+   py -3.14 --version
+   where python
+   where py
+
+If py -3.14 works, the installer will use it.
+If Windows still redirects to a broken Store Python, open:
+Settings -> Apps -> Advanced app settings -> App execution aliases
+and disable broken python.exe/python3.exe aliases.
